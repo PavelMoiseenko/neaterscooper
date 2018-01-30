@@ -97,20 +97,21 @@ a.btn {
     height: 100px;
 }
 
-#productSelection {
+/*#productSelection {
 	width: 330px;
     height: auto;
     padding: 0;
     margin: 0 0 20px 30px;
-}
+}*/
 
 #rejectOffer {
-    outline: none;
+    /*outline: none;
     cursor: pointer;
     font: normal 14px/14px Arial,Helvetica,sans-serif;
     overflow: visible;
     position: relative;
-    border-radius: 4px -webkit-box-shadow:inset 0 0 1px 1px #fff;
+    border-radius: 4px;
+    -webkit-box-shadow:inset 0 0 1px 1px #fff;
     -moz-box-shadow: inset 0 0 1px 1px #fff;
     box-shadow: inset 0 0 1px 1px #fff;
     margin: 0 5px 0 0;
@@ -128,11 +129,11 @@ a.btn {
     width: 202px;
     height: 40px;
     font-size: 20px;
-    line-height: 20px;
+    line-height: 20px;*/
 }
 
 input[type=submit].accept_input_btn {
-    border: solid 1px #707070;
+    /*border: solid 1px #707070;
     color: #fff;
     border-radius: 4px;
     box-shadow: inset 0 0 1px 1px #fff;
@@ -148,7 +149,7 @@ input[type=submit].accept_input_btn {
     background: -moz-linear-gradient(top,#4d9e21 50%,#4e9c38,#429130 50%,#246b10);
     background: -ms-linear-gradient(top,#4d9e21 50%,#4e9c38,#429130 50%,#246b10);
     background: -o-linear-gradient(top,#4d9e21 50%,#4e9c38,#429130 50%,#246b10);
-    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#4d9e21',endColorstr='#246b10');
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#4d9e21',endColorstr='#246b10');*/
 }
 
 #upsellTxt input#rejectOffer,

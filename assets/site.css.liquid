@@ -1,4 +1,37 @@
 @charset "UTF-8";
+/* latin-ext */
+@font-face {
+    font-family: 'Libre Baskerville';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Libre Baskerville Bold'), local('LibreBaskerville-Bold'), url(https://fonts.gstatic.com/s/librebaskerville/v5/kH7K4InNTm7mmOXXjrA5v-Ql1o_0qyP5Uo8lbNkQAd8.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+    font-family: 'Libre Baskerville';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Libre Baskerville Bold'), local('LibreBaskerville-Bold'), url(https://fonts.gstatic.com/s/librebaskerville/v5/kH7K4InNTm7mmOXXjrA5v6y7YSlLHrWsjpD3RcrnyFM.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2212, U+2215;
+}
+
+@font-face {
+    font-family: 'OpenSansExtraBold';
+    src: url({{ 'OpenSans-ExtraBold-webfont.woff' | asset_url }});
+}
+@font-face {
+    font-family: 'OpenSansRegular';
+    src: url({{ 'OpenSans-Regular-webfont.woff' | asset_url }});
+}
+@font-face {
+    font-family: 'OpenSansLight';
+    src: url({{ 'OpenSans-Light-webfont.woff' | asset_url }});
+}
+@font-face {
+    font-family: 'OpenSansBold';
+    src: url({{ 'OpenSans-Bold-webfont.woff' | asset_url }});
+}
 * {
     padding: 0;
     margin: 0
@@ -12,7 +45,7 @@ body {
 body {
     background: #5f5144 url({{'bg.gif' | file_url }});
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 12px
+    font-size: 12px;
 }
 .g-hidden{
 	display: none;
@@ -212,15 +245,31 @@ a:hover {
 
 #formTitle {
     width: auto;
-    height: auto;
-    padding: 0;
-    margin: 5px 0;
+    padding: 30px 0;
+    margin: -8px 0;
     text-align: center;
-    clear: both
+    clear: both;
+    text-shadow: 2px 4px 5px rgba(58,46,38,.75);
 }
-
+#formTitle h3{
+    color: #fff;
+    font-family: 'OpenSansLight', sans-serif;
+    font-size: 27px;
+}
+#formTitle h4 {
+    color: #f8db68;
+    font-family: 'OpenSansBold', sans-serif;
+    font-size: 16px;
+}
+#formTitle h3 span {
+    color: #c6d043;
+    font-family: 'Libre Baskerville',serif;
+}
 #formWrap {
-    padding: 15px 14px
+    padding: 15px 14px;
+}
+#formWrap {
+    padding: 30px;
 }
 
 #form {
@@ -229,16 +278,16 @@ a:hover {
     padding: 0;
     margin: 0 0 20px 30px;
     float: left;
-    _display: inline
+    _display: inline;
 }
 
-#formProduct {
+/*#formProduct {
     width: 405px;
     height: auto;
     margin: 0 30px 20px 0;
     float: right;
     _display: inline
-}
+}*/
 
 #disclaimer {
     width: 660px;
@@ -291,12 +340,34 @@ a:hover {
     position: absolute;
     top: 203px
 }
-
+.form_left{
+    width: 330px;
+    height: auto;
+    padding: 0;
+    margin: 0 0 20px 30px;
+    float: left;
+}
+.form_left #form{
+    margin: 0;
+    width: 100%;
+}
+.form_right{
+    width: 405px;
+    height: auto;
+    margin: 0 30px 20px 0;
+    position: relative;
+    float: right;
+    _display: inline;
+}
 #productSelection {
-    width: 850px;
-    padding-bottom: 10px;
-    margin: 0 auto 20px;
-    position: relative
+    width: auto;
+    height: auto;
+    background: #fff;
+    overflow: hidden;
+    border: solid 1px #bdbcbd;
+    box-sizing: border-box;
+    padding: 10px;
+    margin: 0 0 15px;
 }
 
 #productSelection #QuantityCt {
@@ -453,13 +524,13 @@ a:hover {
     margin-top: 3px
 }
 
-.FormHeadlineL {
+/*.FormHeadlineL {
     font: bold 15px Arial, Helvetica, sans-serif;
     color: #666;
     padding: 0 0 10px;
     margin: 0;
     overflow: hidden
-}
+}*/
 
 .FormSubHeadlineL {
     font: bold 13px Arial, Helvetica, sans-serif;
@@ -832,30 +903,39 @@ input[type=submit].flow_input_btn:hover {
 
 .ttlmain01,
 #subtxt h2 {
-    font: normal 24px/26px Arial, Helvetica, sans-serif
+    font: normal 24px/26px Arial, Helvetica, sans-serif;
+    color: #4a3e30;
 }
 
 .txtbrown01,
 .midli li strong,
 #subtxt h2,
 #subtxt h4 {
-    color: #4a3e30
+    color: #4a3e30;
 }
-
-.txtgrey01,
-#topWrap,
-#features span,
-#subtxt,
-.subpage-text-nav,
-.subpage-text-nav a {
-    color: #666
+.txtcolor01, a, .txt01{
+    color: #821e03;
 }
-
+.txtgrey01, #topWrap, #features span, #subtxt, .subpage-text-nav, .subpage-text-nav a, #formProduct ul{
+    color: #666;
+}
+.subpage-text-nav a{
+    color: #821e03;
+}
 .txtgrey02,
 #Wrap a:hover {
     color: #111
 }
-
+p.question{
+    font: bold 14px Arial,Helvetica sans-serif;
+    color: #666;
+}
+p.answer {
+    border-bottom: 1px dotted #b5bf3a;
+    font: 14px Arial,Helvetica,sans-serif;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
 .assets {
     background-image:url({{ 'assets.png' | file_url }});
   	background-repeat: no-repeat;
@@ -865,31 +945,22 @@ input[type=submit].flow_input_btn:hover {
     text-indent: -9999px
 }
 
-.mainli,
-#features ul,
-#subtxt ul {
+.mainli, #features ul, #subtxt ul, #formProduct ul {
     list-style: none;
     padding: 0;
     margin: 0
 }
 
-.mainli li,
-#features ul li,
-#subtxt ul li {
+.mainli li, #features ul li, #subtxt ul li, #formProduct ul li{
     background: url({{ 'blt-orange.png' | file_url }}) 0 0 no-repeat;
     padding: 0 0 8px 18px;
     margin: 0
 }
-
-.ordnwbtn {
-    background-position: 0 -163px;
-    width: 195px;
-    height: 57px;
-    _height: 55px
+#features ul li {
+    padding: 0 0 14px 18px;
 }
-
 .ordnwbtn:hover {
-    background-position: -195px -163px
+    background-position: -195px -190px;
 }
 
 #outWrap {
@@ -921,12 +992,12 @@ input[type=submit].flow_input_btn:hover {
 .hrmain {
     background: url({{ 'bg_hdot.png' | file_url }}) left repeat-x;
     height: 9px;
-    margin: 20px 0;
-    clear: both
+    margin: 26px 0 10px;
+    clear: both;
 }
 
 .hrmain hr {
-    display: none
+    display: none;
 }
 
 #hdrWrap {
@@ -934,51 +1005,56 @@ input[type=submit].flow_input_btn:hover {
     width: 900px;
     height: 121px;
     padding: 0 14px;
-    margin: 0
+    margin: 0;
 }
 
 #hdrWrap h1 {
     padding: 0;
-    margin: 17px 34px 0 27px;
+    margin: 17px 47px 0 4px;
     _display: inline;
-    float: left
+    float: left;
 }
 
-#hdrWrap h1 .logo{
+/*#hdrWrap h1 .logo{
 	background-image: none;
     overflow: hidden;
     font-size: 0;
 }
 #hdrWrap h1 .logo img{
 	display: block;
-}
+}*/
 #hdrWrap h1 a,
 #hdrWrap h1 span {
-    /*background-image: url(https://www.buyneaterfeeder.com/images/desktop/logo.png);*/
-    width: 320px;
-    height: 80px
+    width: 351px;
+    height: 80px;
 }
 
 #hdrWrap h2 {
     background-position: 0 0;
-    width: 360px;
-    height: 60px;
+    width: 316px;
+    height: 104px;
     padding: 0;
-    margin: 32px 0 0;
-    float: left
+    margin: 13px 0 0;
+    float: left;
 }
-
+.headerassets {
+    background: url({{ 'assets-2.png' | file_url }})  no-repeat;
+    height: 24px;
+    padding: 0;
+    display: block;
+    text-indent: -9999px;
+}
 #ordcrbtn {
-    background-position: 0 -60px;
+    background-position: 0 -85px;
     width: 103px;
     height: 103px;
     margin: 9px 27px 0 0;
     _margin-right: 14px;
-    float: right
+    float: right;
 }
 
 #ordcrbtn:hover {
-    background-position: -103px -60px
+    background-position: -103px -85px;
 }
 
 .outMain {
@@ -987,21 +1063,21 @@ input[type=submit].flow_input_btn:hover {
     padding: 0 0 20px;
     margin: 0 auto;
     position: relative;
-    clear: both
+    clear: both;
 }
 
 .mainWrap {
     background: url({{ 'bg_main.png' | file_url }}) left top repeat-y;
     width: 900px;
     padding: 0 14px;
-    margin: 0 auto
+    margin: 0 auto;
 }
 
 .mainTop {
     background: url({{ 'maintop.png' | file_url }}) left top no-repeat;
     width: 928px;
     height: 20px;
-    margin: 0 auto
+    margin: 0 auto;
 }
 
 #topWrap {
@@ -1009,25 +1085,27 @@ input[type=submit].flow_input_btn:hover {
     min-height: 350px;
     height: auto !important;
     height: 350px;
-    position: relative
+    position: relative;
 }
 
 #offerWrap {
     background: url({{ 'bg_offer.jpg' | file_url }}) left top no-repeat;
     width: 900px;
-    height: 480px;
+    height: 580px;
     margin: 0 auto;
-    position: relative
+    position: relative;
 }
 
 #offerWrap #price {
-    margin: 90px 0 0 25px;
+    /*margin: 65px 0 0 25px;*/
     _display: inline;
     float: left;
     position: relative;
-    z-index: 10
+    z-index: 10;
 }
-
+#offerWrap #price {
+    margin: 100px 0 0 5px;
+}
 #price {
     width: 230px;
     text-align: center
@@ -1035,53 +1113,70 @@ input[type=submit].flow_input_btn:hover {
 
 #offordrow {
     width: 200px;
-    margin: 8px auto 0;
-    clear: both
+    /*margin: 3px 38px 0;*/
+    clear: both;
 }
-
+#offordrow {
+    margin: 3px 22px 0;
+}
 #offordrow .ordnwbtn {
     margin: 0 auto 8px;
-    clear: both
+    clear: both;
 }
 
 #offordrow #ccimg {
     margin: 0;
-    clear: both
+    clear: both;
 }
-
+.ordnwbtn {
+    background-position: 0 -190px;
+    width: 195px;
+    height: 57px;
+    _height: 55px;
+}
+.txtgrey02, #Wrap a:hover {
+    color: #111;
+}
 #points {
     width: 270px;
     _display: inline;
     position: absolute;
     top: 15px;
     right: 15px;
-    z-index: 10
+    z-index: 10;
 }
 
 #video {
     background: #000;
     width: 266px;
     height: 202px;
-    margin: 0 auto 15px
+    margin: 0 auto 15px;
 }
 
 #features {
     background: url({{ 'featuresbtm.png' | file_url }}) center bottom no-repeat;
-    font-size: 16px;
+    font-size: 14px;
     width: 267px;
     padding-bottom: 16px;
     margin: 5px auto 0;
-    clear: both
+    clear: both;
 }
 
 #features h3 {
-    background-position: 0 -220px;
+    background-position: 0 -246px;
     width: 267px;
-    height: 45px;
-    _height: 44px;
-    padding: 0;
+    height: 49px;
+    _height: 48px;
+    padding: 16px 0 0;
     margin: 0;
-    clear: both
+    clear: both;
+    text-indent: 0;
+    color: #fff;
+    font-family: 'OpenSansExtraBold',sans-serif;
+    font-size: 20px;
+    line-height: 19px;
+    text-align: center;
+    text-shadow: 3px 5px 5px rgba(105,112,14,.75);
 }
 
 #featuresli {
@@ -1090,28 +1185,28 @@ input[type=submit].flow_input_btn:hover {
     padding: 10px 10px 4px;
     margin: -10px auto 0;
     clear: both;
-    border-bottom: 2px solid #fff
+    border-bottom: 2px solid #fff;
 }
 
 #midWrap {
     width: 870px;
     padding: 10px 15px;
     margin: 0 auto;
-    clear: both
+    clear: both;
 }
 
 #midWrap h3 {
-    margin: 0 auto 12px
+    margin: 0 auto 12px;
 }
 
 #midWrap hr {
     margin: 20px auto;
-    clear: both
+    clear: both;
 }
 
 .midtxt {
     width: 580px;
-    float: right
+    float: right;
 }
 
 .midli {
@@ -1120,7 +1215,7 @@ input[type=submit].flow_input_btn:hover {
     width: 580px;
     padding: 0;
     margin: 0;
-    clear: both
+    clear: both;
 }
 
 .midli li {
@@ -1130,49 +1225,59 @@ input[type=submit].flow_input_btn:hover {
     margin: 0 10px 0 0;
     text-align: center;
     float: left;
-    display: inline
+    display: inline;
 }
 
 .midli li img {
-    border: 1px solid #666;
-    margin-bottom: 10px
+    margin-bottom: 10px;
 }
 
 .midli li strong {
-    text-transform: uppercase
+    text-transform: uppercase;
 }
 
 .midli li.midlst {
-    margin-right: 0
+    margin-right: 0;
 }
 
 .prodbnr {
     width: 280px;
     text-align: center;
     float: left;
-    position: relative
+    position: relative;
+    top: 3px;
+    left: 22px;
 }
 
 .prodbnr .ordnwbtn {
     position: absolute;
-    bottom: 0;
-    left: 45px;
-    z-index: 10
+    top: 182px;
+    left: 24px;
+    z-index: 10;
 }
 
 #great h3 {
-    background-position: 0 -265px;
-    width: 419px
+    background: none;
+    width: 525px;
+    text-align: center;
+    height: 30px;
+    text-indent: 0;
+    font-family: 'OpenSansRegular',sans-serif;
+    font-size: 24px;
+    color: #555;
 }
-
+#great h3 span {
+    color: #969e28;
+    font-family: 'Libre Baskerville',serif;
+}
 #testshow {
-    width: 580px;
-    height: 215px;
-    float: left
+    width: 233px;
+    height: 200px;
+    float: left;
 }
 
 #easy .prodbnr {
-    float: right
+    float: right;
 }
 
 #footerContentWrap {
@@ -1181,7 +1286,7 @@ input[type=submit].flow_input_btn:hover {
     height: auto;
     padding-top: 0;
     margin: 0 auto;
-    overflow: hidden
+    overflow: hidden;
 }
 
 #footerNavWrap {
@@ -1190,7 +1295,7 @@ input[type=submit].flow_input_btn:hover {
     height: auto;
     margin: 0 auto;
     padding: 0 0 10px;
-    text-align: center
+    text-align: center;
 }
 
 #footerNavWrap a {
@@ -1253,7 +1358,8 @@ input[type=submit].flow_input_btn:hover {
     margin: 12px 0 8px 15px;
     float: left;
     border-right: 1px solid #bdbcbd;
-    display: inline
+    display: inline;
+    color: #4a3e30;
 }
 
 #subtxt li {
@@ -1306,25 +1412,14 @@ input[type=submit].flow_input_btn:hover {
     background: #e0cf9d
 }
 /*************** from 4.0000*****************/
-#offerWrap {
-    /*background: url({{ 'bg_offer.jpg' | file_url }}) left top no-repeat;*/
-    width: 900px;
-    height: 480px;
-    margin: 0 auto;
-    position: relative
-}
 
-#offerWrap #price {
-    margin: 77px 0 0 25px
-}
-
-#offordrow {
-    margin: 0 auto 0
+/*#offordrow {
+    margin: 0 auto 0;
 }
 
 #offordrow .ordnwbtn {
-    margin: 0 auto 4px
-}
+    margin: 0 auto 4px;
+}*/
 
 .SubHeadlineL {
     font: normal 12px/16px Arial, Helvetica, sans-serif;
@@ -1385,11 +1480,6 @@ input[type=submit].flow_input_btn:hover {
     border: solid 1px #bdbcbd;
     box-sizing: border-box;
     padding: 10px
-}
-
-#productSelection {
-    width: 93%;
-    margin: 0 auto 20px
 }
  
 #productSelection .Quantity label {
@@ -1453,4 +1543,24 @@ input[type=submit].flow_input_btn:hover {
 
 #thirdPopup{
 	width: auto;
+}
+/* new from live neaterscooper */
+input[type=submit].accept_input_btn {
+    background: url({{'yes_button.gif' | file_url}}) no-repeat 0 0;
+    border: 0!important;
+    width: 180px;
+    text-indent: -9999px;
+    height: 60px;
+    margin-right: 20px;
+    display: inline-block;
+    cursor: pointer;
+}
+input[type=submit].reject_input_btn{
+    background: url({{'no_button.gif' | file_url}}) no-repeat 0 0;
+    border: 0!important;
+    text-indent: -9999px;
+    width: 61px;
+    height: 42px;
+    display: inline-block;
+    cursor: pointer;
 }
