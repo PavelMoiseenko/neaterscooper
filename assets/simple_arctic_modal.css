@@ -186,6 +186,8 @@ body#your-shopping-cart #topWrap #CartSection{}
     max-height: 100%;
     width: auto;
     height: auto;
+	display: block;
+	margin: 0 auto;
 }
 #CartSection form > .cart__row.cart__header-labels{
 	width: 100%;

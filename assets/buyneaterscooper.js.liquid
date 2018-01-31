@@ -39,6 +39,7 @@ $(document).ready(function() {
 
                          for(var i=0; i<product_rows.length; i++){
                            var title = product_rows[i].title;
+                           var productType = product_rows[i].product_type;
                            var quantity = +product_rows[i].quantity;
                            price = product_rows[i].price * .01;
                            var total_price = quantity * price;
@@ -49,13 +50,15 @@ $(document).ready(function() {
                            
                            //row += "<tr><td>" + title + "</td><td>" + quantity + "</td><td>" + total_price + "</td><td>P&H</td><td><a href=" + href_del + " class='del'>Delete</a></td></tr>";
 //                            row += "<tr><td id='product_name'>" + title + "</td><td id='" + product_id + "' class='" + product_id + " product'>" + quantity + "</td><td>" + total_price.toFixed(2) + "</td><td>P&H</td><td><a href=" + href_del + " class='del' id='" + product_id + "'>Delete</a></td></tr>";
-                           row = "<tr><td id='product_name'>" + title + "</td><td id='" + product_id + "' class='" + product_id + " product'><select class='ns-select-quantity'><option value='0'>0</option><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option><option value='9'>9</option><option value='10'>10</option></select>" + "<span style='display:none'>" + quantity + "</span>" + "</td><td>" + total_price.toFixed(2) + "</td></tr>";//<td></td>
+                           row = "<tr><td id='product_name'>" + title + "</td><td id='" + product_id + "' class='" + product_id + " " + productType + " product'><select class='ns-select-quantity'><option value='0'>0</option><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option><option value='7'>7</option><option value='8'>8</option><option value='9'>9</option><option value='10'>10</option></select>" + "<span style='display:none'>" + quantity + "</span>" + "</td><td>" + total_price.toFixed(2) + "</td></tr>";//<td></td>
                            	  
-
-                           $('.reviewTableBody').append(row);                           
+                           if(productType != 'freeupsell') {
+                               $('.reviewTableBody').append(row);
+                           }
                            var sel = "#" + product_id + " .ns-select-quantity";
 						   $("body").find($(sel)).val(quantity);
-                           
+                           $("body").find($(".neaterfeeder select")).prop("disabled", true);
+                           $("body").find($(".freeupsell select")).prop("disabled", true);
                          }
                          
                          $('.ordertotal').text(order_total.toFixed(2));
@@ -129,7 +132,9 @@ $(document).ready(function() {
             async: false,
             success: function(data){      	
               var variantIdUpsell = data.variants[0].id;
-              addToCartNs(variantIdUpsell, sumScooper);
+              var updateFreeUpsellObj = {};
+              updateFreeUpsellObj[variantIdUpsell] = sumScooper;
+              updateCartNs(updateFreeUpsellObj);
               cartRedirectNs();
             }
           });
@@ -144,13 +149,13 @@ $(document).ready(function() {
   $("#productSelection .btn").on("click", function(e){  
 	
     e.preventDefault();
+    $("#warning").hide();
     $(this).css('pointer-events', 'none');
     
   	let productVariantId = $(this).data("productvariantid");
     
     var sel = "#" + productVariantId + " .ns-select-quantity";
 	var currentNums = $("body").find($(sel)).val();
-    console.log(currentNums);
     if(!currentNums || currentNums < 10){    
     	addToCartNs(productVariantId, 1);
     	putCartToTableNs();
@@ -166,9 +171,8 @@ $(document).ready(function() {
     var quantity = $(this).val() 
     var productVariantId = $(this).parent().attr("id");
     var updateObj = {};    	
-    updateObj[productVariantId]= quantity;     	
-  	console.log(updateObj);
-    updateCartNs(updateObj);//console.log(this.value);
+    updateObj[productVariantId]= quantity;
+    updateCartNs(updateObj);
   });
   
   
@@ -209,7 +213,16 @@ $(document).ready(function() {
   //Action: popup call
   $(".info_popupContinue").on("click", function(e){	
       e.preventDefault();
-	  $('#ns-popup').arcticmodal();	
+
+      var isScooperInCart = $("body").find(".reviewTableBody .scooper").length;
+	  if(isScooperInCart){
+          $("#warning").hide();
+          $('#ns-popup').arcticmodal();
+      }
+      else{
+          $("#warning").show();
+      }
+
    });
   
   //Action: reject upsell offer
@@ -233,7 +246,9 @@ $(document).ready(function() {
             async: false,
             success: function(data){      	
               var variantIdUpsell = data.variants[0].id;
-              addToCartNs(variantIdUpsell, upsellSum);
+              var updateUpsellObj = {};
+              updateUpsellObj[variantIdUpsell] = upsellSum;
+              updateCartNs(updateUpsellObj);
               snapshotCartNs();
             }
           });
