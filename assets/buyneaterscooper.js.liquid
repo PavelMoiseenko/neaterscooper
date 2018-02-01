@@ -2,7 +2,13 @@ $(document).ready(function() {
   
   
   //JS script for neaterscooper
-  
+
+
+    if(!!window.performance && window.performance.navigation.type === 2)
+    {
+        window.location.reload();
+    }
+
   //Add to Cart
   function addToCartNs(prodVariantId, prodQuantity){  
       
