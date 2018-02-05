@@ -256,7 +256,10 @@
                   </a>
                 </h1>
                 <h2 class="headerassets">Catches spilled food &amp; water before it hits the floor!</h2>
-                <a href="#order" class="assets" id="ordcrbtn" title="Order Neater Feeder&reg; Express Now!">Order Now!</a>
+                {% if template != 'cart' %}
+                    <a href="#order" class="assets" id="ordcrbtn" title="Order Neater Feeder&reg; Express Now!">Order Now!</a>
+                {% endif %}
+
             </div>
 
 {% schema %}

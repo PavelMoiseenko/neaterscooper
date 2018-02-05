@@ -54,6 +54,10 @@ a.btn {
     font-size: 11px;
 }
 
+.disabled-in-cart{
+    background-color: #ccc;
+}
+
 .button {
     width: 85px;
     height: 13px;
